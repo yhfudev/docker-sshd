@@ -6,6 +6,8 @@ MAINTAINER yhfu <yhfudev@gmail.com>
 # MOUNT pacman:/var/cache/pacman/pkg/ # Rockerfile
 VOLUME [ "/sys/fs/cgroup" ]
 
+RUN pacman -Syyu --needed --noconfirm
+
 RUN getent group systemd-journal-remote >/dev/null 2>&1 || groupadd -r systemd-journal-remote 2>&1 || :
 RUN pacman -S --noprogressbar --noconfirm --needed systemd iproute2
 
